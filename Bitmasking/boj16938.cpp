@@ -23,14 +23,19 @@ int main(int argc, char** argv)
         int sum = 0;
         int mx = 0;
         int mn = INF;
+
         for (int j = 0; j < 15; ++j) {
+            // j번째 자리가 1인 경우
             if (i & (1<<j)) {
                 v.push_back(j);
+                // 문제 난이도의 합 계산
                 sum += problems[j];
+                // 가장 어려운, 쉬운 문제 계산
                 if (problems[j] > mx) mx = problems[j];
                 if (problems[j] < mn) mn = problems[j];
             }
         }
+        // 조건을 만족하지 않는다면 continue
         if (v.size() <= 1) continue;
         if (sum < l || sum > r) continue;
         if (mx - mn < x) continue;
