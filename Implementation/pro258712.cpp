@@ -1,7 +1,6 @@
 #include <string>
 #include <vector>
 #include <sstream>
-#include <map>
 #include <unordered_map>
 #include <algorithm>
 
@@ -53,10 +52,8 @@ int solution(vector<string> friends, vector<string> gifts) {
             // 주고받은 선물이 없거나, 그 수가 같은 경우
             if (friends_info[from][to] == friends_info[to][from]) {
                 if (gift_score[from] > gift_score[to]) next_gift[from]++;
-                else if (gift_score[from] < gift_score[to]) next_gift[to]++;
             } else { // 주고받은 선물의 수가 다른 경우
                 if (friends_info[from][to] > friends_info[to][from]) next_gift[from]++;
-                else next_gift[to]++;
             }
         }
     }
@@ -68,7 +65,7 @@ int solution(vector<string> friends, vector<string> gifts) {
     if (ret.empty()) return 0;
 
     // 위의 이중 반복문에서 a-b, b-a 2번 계산되므로 2로 나눠서 최종 반환값 계산
-    return ret[0].second / 2;
+    return ret[0].second;
 }
 
 int main() {
